@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRAMEWORK – 영상 외주 플랫폼</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif; }
+    body { background: #0f0f12; color: #fff; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      padding: 24px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #222;
+    }
+
+    header h1 { font-size: 20px; font-weight: 700; letter-spacing: 1px; }
+    nav a { margin-left: 32px; opacity: 0.8; }
+    nav a:hover { opacity: 1; }
+
+    .hero {
+      padding: 120px 80px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero h2 { font-size: 56px; line-height: 1.2; margin-bottom: 24px; }
+    .hero p { font-size: 18px; opacity: 0.8; margin-bottom: 40px; }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .hero-visual {
+      width: 100%;
+      height: 420px;
+      background: linear-gradient(135deg, #1f1f2a, #111);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    section {
+      padding: 100px 80px;
+      border-top: 1px solid #222;
+    }
+
+    section h3 {
+      font-size: 36px;
+      margin-bottom: 48px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .card {
+      background: #15151b;
+      padding: 32px;
+      border-radius: 20px;
+      transition: transform .3s, background .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: #1b1b24;
+    }
+
+    .card h4 { font-size: 20px; margin-bottom: 12px; }
+    .card p { font-size: 15px; opacity: 0.75; }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .step {
+      padding: 24px;
+      border-radius: 16px;
+      background: #14141a;
+    }
+
+    .step span { font-size: 14px; opacity: 0.5; }
+    .step h5 { font-size: 18px; margin: 8px 0; }
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      border: none;
+      background: #1a1a22;
+      color: #fff;
+    }
+
+    form textarea { resize: vertical; height: 140px; }
+
+    footer {
+      padding: 40px 80px;
+      border-top: 1px solid #222;
+      font-size: 14px;
+      opacity: 0.6;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 900px) {
+      header, section, .hero, footer { padding: 40px 24px; }
+      .hero { grid-template-columns: 1fr; }
+      .services, .process, .contact { grid-template-columns: 1fr; }
+      .hero h2 { font-size: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>FRAMEWORK</h1>
+  <nav>
+    <a href="#services">서비스</a>
+    <a href="#process">프로세스</a>
+    <a href="#contact">문의</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h2>영상 외주,<br>이제 감각적으로.</h2>
+    <p>광고 · 브랜드 필름 · SNS 콘텐츠까지<br>기획부터 납품까지 한 번에 해결합니다.</p>
+    <a href="#contact" class="btn">외주 문의하기</a>
+  </div>
+  <div class="hero-visual">Showreel / Motion / Film</div>
+</section>
+
+<section id="services">
+  <h3>제공 서비스</h3>
+  <div class="services">
+    <div class="card">
+      <h4>브랜드 영상</h4>
+      <p>기업·브랜드 아이덴티티를 담은 메인 필름 제작</p>
+    </div>
+    <div class="card">
+      <h4>SNS 콘텐츠</h4>
+      <p>릴스, 쇼츠, 유튜브 등 플랫폼 최적화 영상</p>
+    </div>
+    <div class="card">
+      <h4>모션그래픽</h4>
+      <p>타이틀, 인포그래픽, UI·UX 모션</p>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <h3>진행 프로세스</h3>
+  <div class="process">
+    <div class="step">
+      <span>STEP 01</span>
+      <h5>상담</h5>
+      <p>목적과 예산, 일정 파악</p>
+    </div>
+    <div class="step">
+      <span>STEP 02</span>
+      <h5>기획</h5>
+      <p>콘셉트 및 구성안 제안</p>
+    </div>
+    <div class="step">
+      <span>STEP 03</span>
+      <h5>제작</h5>
+      <p>촬영 · 디자인 · 편집</p>
+    </div>
+    <div class="step">
+      <span>STEP 04</span>
+      <h5>납품</h5>
+      <p>피드백 반영 후 최종 전달</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h3>외주 문의</h3>
+  <div class="contact">
+    <div>
+      <p style="opacity:0.8">프로젝트 개요를 남겨주시면<br>24시간 내로 연락드립니다.</p>
+    </div>
+    <form>
+      <input type="text" placeholder="이름 / 회사명" required />
+      <input type="email" placeholder="이메일" required />
+      <textarea placeholder="프로젝트 내용"></textarea>
+      <button class="btn" type="submit">문의 보내기</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 FRAMEWORK</span>
+  <span>Video Production & Motion Design</span>
+</footer>
+
+</body>
+</html>
