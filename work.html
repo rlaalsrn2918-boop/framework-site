@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work - Jeon9 Production</title>
+  <style>
+    /* 폰트 등록 (이전에 알려드린 BBHBartle 설정) */
+    @font-face {
+      font-family: 'BBHBartle';
+      src: url('fonts/BBHBartle-Regular.otf') format('opentype');
+    }
+
+    body {
+      background-color: #000; /* 검은색 배경 */
+      color: #fff;
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+    }
+
+   /* 1. 헤더 위치를 메인과 동일하게 absolute로 설정 */
+header {
+  padding: 9px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute; /* 👈 메인과 동일하게 변경 */
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 100;
+  box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
+}
+
+/* 2. 로고 스타일 수정 (크기 + 그림자 추가) */
+.logo-image { 
+  height: 60px; 
+  width: auto;
+  display: block;
+  /* 👈 메인과 동일하게 인버트와 그림자 적용 */
+  filter: invert(1) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)); 
+}
+
+/* 3. 컨텐츠가 헤더에 가려지지 않도록 상단 여백 조절 */
+.work-container {
+  padding: 180px 80px 100px; /* 👈 상단 패딩을 늘려 헤더 아래에서 시작하게 함 */
+  text-align: center;
+}
+
+    nav a {
+      margin-left: 40px;
+      text-decoration: none;
+      color: white;
+      font-family: 'BBHBartle'; /* 메뉴 폰트 적용 */
+      font-size: 18px;
+    }
+
+    /* 포트폴리오 레이아웃 (참고 이미지 스타일) */
+    .work-container {
+      padding: 100px 80px;
+      text-align: center;
+    }
+
+    .category-title {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 50px;
+      letter-spacing: 5px;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3열 구성 */
+      gap: 20px;
+    }
+
+    .work-item {
+      background: #111;
+      height: 300px; /* 영상/이미지 들어갈 자리 */  
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+
+    .work-item:hover { transform: scale(1.02); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html"><img src="images/logo.png" class="logo-image"></a></h1>
+    <nav>
+      <a href="work.html" style="border-bottom: 2px solid white;">WORK</a> <a href="index.html#about">ABOUT</a>
+      <a href="index.html#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main class="work-container">
+    <h2 class="category-title">BEAUTY</h2> <div class="work-grid">
+      <div class="work-item">영상 1</div>
+      <div class="work-item">영상 2</div>
+      <div class="work-item">영상 3</div>
+    </div>
+  </main>
+
+</body>
+</html>
