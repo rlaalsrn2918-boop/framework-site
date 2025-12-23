@@ -1,297 +1,172 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jeon9 Production</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* 1. 폰트 파일 등록 */
-    @font-face {
-      font-family: 'BBHBartle';
-      src: url('fonts/BBHBartle-Regular.otf') format('opentype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    /* 전역 설정 */
-    :root {
-      --blue-main: #1f4fff;
-      --blue-sub: #6b8cff;
-      --dark: #0f172a;
-      --gray: #64748b;
-      --bg: #f8fafc;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; }
-    body { background: var(--bg); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
-
-    /* Header */
-    header {
-      padding: 30px 80px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: absolute; 
-      width: 100%;
-      top: 0;
-      left: 0;
-      background: transparent;
-      z-index: 100;
-    }
-
-    /* 상단 로고 스타일 */
-    .logo-image {
-      height: 60px;
-      width: auto;
-      display: block;
-      filter: invert(1) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-    }
-
-    /* 네비게이션 메뉴 */
-    nav { display: flex; align-items: center; }
-    nav a {
-      margin-left: 40px;
-      text-decoration: none;
-      color: white;
-      font-family: 'BBHBartle', sans-serif; 
-      font-size: 18px;
-      letter-spacing: 1px;
-      font-weight: normal;
-      transition: 0.3s;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    nav a:hover { opacity: 0.7; }
-
-    /* Hero Section */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: #000;
-    }
-    .hero-video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      opacity: 0.7;
-    }
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: white;
-      width: 100%;
-    }
-
-    /* 로고 위 소제목 스타일 */
-    .hero-label { 
-      font-family: 'BBHBartle', sans-serif; /* 폰트 적용 */
-      font-size: 20px; 
-      font-weight: normal; 
-      letter-spacing: 6px; 
-      display: block; 
-      margin-bottom: 20px;
-      color: rgba(255, 255, 255, 0.9);
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    }
-
-    /* 중앙 메인 로고 이미지 스타일 */
-    .main-logo-image {
-      width: 60vw;
-      max-width: 800px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      filter: invert(1) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
-      animation: fadeInCenter 2s ease-out; /* 등장 애니메이션 */
-    }
-
-    @keyframes fadeInCenter {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* 흐르는 텍스트 애니메이션 */
-    .scroll-text-wrapper {
-      width: 100%;
-      overflow: hidden;
-      margin-top: 50px; /* 로고와의 간격 확보 */
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(5px);
-      padding: 15px 0;
-    }
-    .scroll-text {
-      display: flex;
-      width: max-content;
-      animation: scroll-left 25s linear infinite;
-    }
-    .scroll-text span {
-      padding-right: 50px;
-      font-size: 1.1rem;
-      font-weight: 400;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    @keyframes scroll-left {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* 공통 섹션 스타일 */
-    section { padding: 120px 80px; }
-    .section-title { font-size: 36px; font-weight: 700; margin-bottom: 40px; }
-
-    /* About Us */
-    .about p { max-width: 720px; font-size: 20px; color: var(--gray); word-break: keep-all; }
-
-    /* Portfolio Grid */
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .portfolio-item { 
-      background: white; border-radius: 20px; overflow: hidden; 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s; 
-    }
-    .portfolio-item:hover { transform: translateY(-10px); }
-    .portfolio-thumb { height: 220px; background: #e2e8f0; }
-    .portfolio-content { padding: 24px; }
-
-    /* Trust Section */
-    .trust { background: white; border-radius: 30px; padding: 60px; box-shadow: 0 20px 40px rgba(0,0,0,0.03); }
-    .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-    .trust-item h3 { font-size: 40px; color: var(--blue-main); margin-bottom: 10px; }
-
-    /* Contact Section */
-    .contact { text-align: center; }
-    .contact a {
-      display: inline-block; margin-top: 30px; padding: 20px 60px;
-      border-radius: 50px; background: var(--blue-main); color: white;
-      text-decoration: none; font-weight: 600; transition: 0.3s;
-    }
-    .contact a:hover { background: var(--dark); transform: scale(1.05); }
-
-    footer { padding: 60px; text-align: center; color: var(--gray); font-size: 14px; }
-
-    /* 모바일 대응 */
-    @media (max-width: 768px) {
-      header { padding: 20px 24px; }
-      .logo-image { height: 40px; }
-      .main-logo-image { width: 80vw; }
-      section { padding: 80px 24px; }
-      nav a { margin-left: 20px; font-size: 14px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZGOE | AI 비디오 프로덕션 스튜디오</title>
+    <meta name="description" content="상상을 넘어, AI로 완성하다. ZGOE는 차세대 AI 기술로 영화 같은 시각적 경험을 만드는 비디오 프로덕션 스튜디오입니다.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <header>
-    <h1>
-      <a href="/">
-        <img src="images/logo.png" alt="Zone 9 Logo" class="logo-image">
-      </a>
-    </h1>
-    <nav>
-      <a href="work.html">WORK</a>
-      <a href="#about">ABOUT</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="videos/Hero main.mp4" type="video/mp4">
-    </video>
-    <div class="hero-inner">
-      <span class="hero-label">The Last 1 for Perfection.</span>
-      <div class="main-logo-wrapper">
-        <img src="images/logo.png" alt="Zone 9 Logo" class="main-logo-image">
-      </div>
-      
-      <div class="scroll-text-wrapper">
-        <div class="scroll-text">
-          <span>Brand Film · Commercial · Short-form · Visual Storytelling · Brand Identity · Motion Graphic · Editing · Directing ·</span>
-          <span>Brand Film · Commercial · Short-form · Visual Storytelling · Brand Identity · Motion Graphic · Editing · Directing ·</span>
+    <!-- Hero Section -->
+    <header class="hero-section" id="home">
+        <div class="logo-container">
+            <img src="logo.png" alt="ZGOE Logo" class="site-logo">
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <h3 class="section-title">About Us</h3>
-    <p>
-      우리는 단순히 영상을 제작하지 않습니다.<br>
-      기획부터 촬영, 편집까지 모든 과정에서<br>
-      <strong>‘왜 이 영상이 필요한가’</strong>를 가장 중요하게 생각합니다.<br>
-      그 결과, 고객이 신뢰할 수 있는 결과물을 제공합니다.
-    </p>
-  </section>
-
-  <section id="work">
-    <h3 class="section-title">Portfolio</h3>
-    <div class="portfolio-grid">
-      <div class="portfolio-item">
-        <div class="portfolio-thumb"></div>
-        <div class="portfolio-content">
-          <h4>Brand Film</h4>
-          <p>브랜드 아이덴티티 중심의 시네마틱 영상</p>
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-content">
+            <h1 class="glitch-text" data-text="상상을 넘어선 세계">상상을 넘어선 세계</h1>
+            <h2 class="sub-headline"><span class="gradient-text">AI</span>로 완성하다</h2>
+            <p class="hero-desc">우리는 최첨단 인공지능 기술을 사용하여 압도적인 시각적 경험을 창조합니다.</p>
+            <a href="#contact" class="cta-button">
+                <span class="btn-text">프로젝트 시작하기</span>
+                <span class="btn-gradient"></span>
+            </a>
         </div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-thumb"></div>
-        <div class="portfolio-content">
-          <h4>Commercial</h4>
-          <p>제품과 메시지를 명확히 전달하는 광고 영상</p>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow"></div>
         </div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-thumb"></div>
-        <div class="portfolio-content">
-          <h4>Short-form Content</h4>
-          <p>SNS 최적화 숏폼 콘텐츠 제작</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <section id="trust">
-    <div class="trust">
-      <h3 class="section-title">Why Trust Us</h3>
-      <div class="trust-grid">
-        <div class="trust-item">
-          <h3>100%</h3>
-          <p>직접 기획 · 직접 제작</p>
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <h2 class="section-title">제공 <span class="gradient-text">서비스</span></h2>
+        <div class="cards-container">
+            <div class="glass-card" data-tilt>
+                <div class="card-icon">🎬</div>
+                <h3>AI 광고 제작</h3>
+                <p>기록적인 시간 내에 포토리얼리스틱한 품질로 고효율 광고 영상을 제작합니다.</p>
+            </div>
+            <div class="glass-card" data-tilt>
+                <div class="card-icon">📖</div>
+                <h3>브랜드 스토리텔링</h3>
+                <p>브랜드의 철학을 아름다운 시각적 여정으로 엮어내는 내러티브 중심의 콘텐츠입니다.</p>
+            </div>
+            <div class="glass-card" data-tilt>
+                <div class="card-icon">🎨</div>
+                <h3>디지털 아트</h3>
+                <p>뮤직 비디오, 전시, NFT를 위한 초현실적이고 미래지향적인 비디오 아트입니다.</p>
+            </div>
         </div>
-        <div class="trust-item">
-          <h3>10+</h3>
-          <p>다양한 프로젝트 경험</p>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section" id="portfolio">
+        <h2 class="section-title">대표 <span class="gradient-text">작품</span></h2>
+        <div class="masonry-grid">
+            <!-- Portfolio Item 1 -->
+            <div class="portfolio-item">
+                <div class="portfolio-thumb"
+                    style="background-image: url('portfolio_item_1.png'), linear-gradient(45deg, #FF00CC, #333399);">
+                    <div class="overlay">
+                        <h3>사이버펑크 시티</h3>
+                        <span>AI 컨셉 아트</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Portfolio Item 2 -->
+            <div class="portfolio-item large">
+                <div class="portfolio-thumb"
+                    style="background-image: url('portfolio_item_2.png'), linear-gradient(45deg, #00DBDE, #FC00FF);">
+                    <div class="overlay">
+                        <h3>네온 드림</h3>
+                        <span>뮤직 비디오</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Portfolio Item 3 -->
+            <div class="portfolio-item">
+                <div class="portfolio-thumb"
+                    style="background-image: url('portfolio_item_3.png'), linear-gradient(45deg, #f12711, #f5af19);">
+                    <div class="overlay">
+                        <h3>합성 인류</h3>
+                        <span>캐릭터 디자인</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Portfolio Item 4 -->
+            <div class="portfolio-item">
+                <div class="portfolio-thumb"
+                    style="background-image: url('hero_background.png'), linear-gradient(45deg, #654ea3, #eaafc8);">
+                    <div class="overlay">
+                        <h3>유동적 움직임</h3>
+                        <span>추상 루프</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="trust-item">
-          <h3>End-to-End</h3>
-          <p>기획부터 납품까지 원스톱</p>
+    </section>
+
+    <!-- Client Journey Section -->
+    <section class="journey-section" id="process">
+        <h2 class="section-title">작업 <span class="gradient-text">프로세스</span></h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content left">
+                    <h3>01. 컨셉 도출</h3>
+                    <p>비전, 스타일, 그리고 내러티브를 정의하기 위해 함께 브레인스토밍합니다.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content right">
+                    <h3>02. AI 생성</h3>
+                    <p>우리의 AI 엔진이 프롬프트를 해석하여 초기 시각적 시드(Seeds)를 생성합니다.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content left">
+                    <h3>03. 정교화 작업</h3>
+                    <p>완벽함을 위해 전문가의 수작업, 업스케일링, 모션 스무딩 작업을 거칩니다.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content right">
+                    <h3>04. 최종 전달</h3>
+                    <p>원하시는 포맷으로 최종 고해상도 렌더링 파일을 전달합니다.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact" class="contact">
-    <h3 class="section-title">Contact</h3>
-    <p>프로젝트 문의 및 견적 상담을 원하신다면 언제든지 연락 주세요.</p>
-    <a href="mailto:contact@jeon9.com">프로젝트 문의하기</a>
-  </section>
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-container">
+            <h2>함께 만들 <span class="gradient-text">준비 되셨나요?</span></h2>
+            <p>비디오 프로덕션의 미래로 한 걸음 내딛으세요.</p>
+            <a href="#" class="cta-button large-cta">
+                <span class="btn-text">프로젝트 시작하기</span>
+                <span class="btn-gradient"></span>
+            </a>
+        </div>
+    </section>
 
-  <footer>
-    © 2025 Jeon9 Production. All Rights Reserved.
-  </footer>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 ZGOE AI Studio. All rights reserved.</p>
+            <div class="socials">
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
 
+    <script src="script.js"></script>
 </body>
+
 </html>
